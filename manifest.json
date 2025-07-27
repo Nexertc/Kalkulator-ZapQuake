@@ -1,0 +1,20 @@
+{
+  "name": "Zapquaker",
+  "short_name": "Kalkulator ZQ",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e293b",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "ZapQuake.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "ZapQuake.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

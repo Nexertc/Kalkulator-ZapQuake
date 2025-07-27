@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1e293b"/>
+<link rel="icon" href="icon-192.png" type="image/png">
+  <title>ZapQuake Kalkulator - COC</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <button id="installBtn">
+ <img src="ZapQuake.png" alt="Install Icon">
+  Install Kalkulator ZQ
+</button>
+  <div class="container">
+    <h1>Kalkulator 
+    <span class="a2">Zap</span>
+    <span class="a3">Quake</span>
+   </h1>
+
+
+<label for="zap-level"><p>Level Lightning Spell:</p></label>
+<select id="zap-level">
+  <option value="1">Level 1</option>
+  <option value="2">Level 2</option>
+  <option value="3">Level 3</option>
+  <option value="4">Level 4</option>
+  <option value="5">Level 5</option>
+  <option value="6">Level 6</option>
+  <option value="7">Level 7</option>
+  <option value="8">Level 8</option>
+  <option value="9">Level 9</option>
+  <option value="10">Level 10</option>
+  <option value="11">Level 11</option>
+  <option value="12">Level 12</option>
+</select>
+
+
+
+<label for="quake-level"><p>Level Earthquake Spell:</p></label>
+<select id="quake-level">
+  <option value="1">Level 1</option>
+  <option value="2">Level 2</option>
+  <option value="3">Level 3</option>
+  <option value="4">Level 4</option>
+   <option value="5">Level 5</option>
+</select>
+
+    <label for="target"><p>Pilih Target Bangunan:</p></label>
+    <select id="target">
+      <option value="Canon">Canon</option>
+    <option value="Archer_tower">Archer tower</option>
+    <option value="Mortar">Mortar</option>
+    <option value="bost_mortar">Mortar (Bost)</option>
+    <option value="air_defense">air defense</option>
+    <option value="Wizard">Wizard Tower</option>
+    <option value="bost_wizard">Wizard (bost)</option>  
+    <option value="tesla">Tesla</option>
+    <option value="bost_tesla">Tesla (bost)</option>
+   <option value="Sweper">Air Sweper</option> <option value="bom_tower">Bom Tower</option>
+    <option value="bost_BomTower">Bom Tower (Bost)</option>
+     <option value="xbow">X-bow</option>
+    <option value="bost_xbow">X Bow (Bost)</option>
+    <option value="inferno">Inferno tower</option>
+    <option value="bost_inferno">Inferno (bost)</option>  
+     <option value="Eagle">Eagle</option>
+     <option value="Ketapel">Ketapel</option>
+     <option value="Builder">Builder</option>
+     <option value="bost_builder">Builder (bost)</option>
+     <option value="Monolit">Monolit</option>
+     <option value="Spell_tower">Spell tower</option>
+     <option value="Canon_ganda">Canon ganda</option>
+      <option value="bost_CanonGanda">Canon ganda (bost)</option>
+     <option value="Multi_archer">Multi archer</option>
+  <option value="bost_MultiArcher">Multi archer (bost)</option>
+ <option value="fire_spriter">Fire Spriter</option>
+<option value="bost_FireSpriter">Fire Spriter (bost)</option>
+<option value="pilihan_GandaCanon">Menara pilihan ganda Canon</option>
+<option value="bost_pilihan_GandaCanon">Menara pilihan ganda Canon (bost)</option>
+<option value="pilihan_GandaArcher">Menara pilihan ganda Archer</option>
+<option value="bost_pilihan_GandaArcher">Menara pilihan ganda Archer (bost)</option>
+  <option value="Hook_tower">Hook tower</option>
+  <option value="Api_area">Api</option>
+  <option value="Batako">Batako</option>
+    </select>
+
+<label for="building-level"><p>Level Bangunan:</p></label>
+<select id="building-level">
+  <option value="1">Level</option>
+</select>
+
+<button onclick="hitungZapQuake(true)">Hitung ZapQuake</button>
+
+<div class="btn2" onclick="hitungZapQuake(false)">Tanpa Gempa</div>
+
+    
+    <div id="hasil"></div>
+    <footer class="hidden-footer">
+  Kalkulator ZapQuake untuk menghitung berapa total petir gempa untuk menghancurkan bangunan
+</footer>
+  </div>
+  
+
+
+  <script src="script.js"></script>
+  
+  
+   <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(reg => console.log('✅ Service Worker terdaftar:', reg.scope))
+        .catch(err => console.error('❌ Gagal daftar Service Worker:', err));
+    }
+
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = 'block';
+
+      installBtn.addEventListener('click', () => {
+        installBtn.style.display = 'none';
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('✅ User menerima install');
+          } else {
+            console.log('❌ User batal install');
+          }
+          deferredPrompt = null;
+        });
+      });
+    });
+  </script>
+
+  
+</body>
+</html>
